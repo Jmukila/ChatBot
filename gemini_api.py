@@ -3,7 +3,6 @@ from dotenv import load_dotenv
 import requests
 # Load environment variables from .env file (if available)
 load_dotenv()
-#export GEMINI_API_KEY="AIzaSyDGBfmHiDyQGMVKQt9Fn2bXuEq0eL5ITjg"
 # Get API key from environment variables
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
