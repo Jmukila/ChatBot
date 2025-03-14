@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini AI Chatbot</title>
+    
+    <!-- Bootstrap CSS for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        body {
+            background-color: #fdfdfd;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+        .chat-container {
+            max-width: 650px;
+            margin: 50px auto;
+            padding: 25px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        .response-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 5px solid #007bff;
+            font-size: 16px;
+            white-space: pre-line; /* Ensures new lines are respected */
+        }
+        code {
+            background: #eef;
+            padding: 10px;
+            border-radius: 5px;
+            display: block;
+            overflow-x: auto; /* Enables horizontal scrolling for long code */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <h1>💬 Gemini AI Chatbot</h1>
+        <form action="/" method="post">
+            <div class="mb-3">
+                <label for="prompt" class="form-label">Enter your prompt:</label>
+                <input type="text" class="form-control" id="prompt" name="prompt" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Submit</button>
+        </form>
+
+        {% if response %}
+        <div class="response-box mt-3">
+            <h5>AI Response:</h5>
+            <p>{{ response |  replace('**', '')|replace('*', '') | replace('\n', '<br>') | replace('```python', '<pre><code>') | replace('```', '</code></pre>') | safe }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
